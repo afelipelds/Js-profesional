@@ -61,15 +61,15 @@
       let counter = makeCounter(7);
 
       console.log('The count is:', counter.getCount());
-      counter.increase();
+      counter.increase(); //8
       console.log('The count is:', counter.getCount());
-      counter.decrease();
-      counter.decrease();
-      counter.decrease();
-      counter.decrease();
+      counter.decrease(); // 7
+      counter.decrease(); // 6
+      counter.decrease(); // 5
+      counter.decrease(); // 4
       console.log('The count is:', counter.getCount());
 
-      counter.count = 0;
+      counter.count = 0; // Undefined (no lo puede encontrar)
       console.log('The count is:', counter.getCount());
     </script>
   </body>
