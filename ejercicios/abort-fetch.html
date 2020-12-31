@@ -36,22 +36,28 @@
         startLoading();
 
         controller = new AbortController()
+        console.log('controller', controller)
 
         try {
-          const response = await fetch(url, {signal: controller.signal })
-          const blob = await response.blob()  //Binario de la petición, que se debe convertir a una URL
-          const imgUrl = URL.createObjectURL(blob)
-          img.src = imgUrl
-        } catch (error) {
-          console.log('error ─>', error)
+          const response = await fetch(url, { signal: controller.signal });
+          const blob = await response.blob();
+          // console.log(response, blob);
+          
+          const imgUrl = URL.createObjectURL(blob);
+          // console.log('imgUrl',imgUrl);
+  
+          img.src = imgUrl;
+
+        } catch( error ) {
+          console.log('Error ->', error )
         }
 
         stopLoading();
       };
 
       stopButton.onclick = function() {
+        controller.abort();
         stopLoading();
-        controller.abort()
       };
     </script>
   </body>
