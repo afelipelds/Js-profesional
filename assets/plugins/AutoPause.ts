@@ -1,14 +1,18 @@
+import MediaPlayer from '../MediaPlayer';
+
 class AutoPause {
+  private threshold: number;
+  player: MediaPlayer;
+
   constructor() {
     this.threshold = 0.25;
     this.handleIntersection = this.handleIntersection.bind(this);
     this.handleVisibilityChange = this.handleVisibilityChange.bind(this);
-    this.pausedByVisibility = false;
   }
 
   run(player) {
     this.player = player;
-
+    
     const observer = new IntersectionObserver(this.handleIntersection, {
       threshold: this.threshold,
     });
@@ -18,7 +22,7 @@ class AutoPause {
     document.addEventListener('visibilitychange', this.handleVisibilityChange);
   }
 
-  handleIntersection(entries) {
+  private handleIntersection(entries: IntersectionObserverEntry[]) {
     const entry = entries[0];
     console.log('entry ─>', entry);
 
@@ -31,21 +35,10 @@ class AutoPause {
     }
   }
 
-  handleVisibilityChange() {
+  private handleVisibilityChange() {
     const isVisible = document.visibilityState == 'visible';
-    console.log('isVisible ─>', isVisible);
-
-    if (isVisible) {
-      // if(this.pausedByVisibility) {
-      // this.pausedByVisibility = false;
-      this.player.play();
-      // }
-    } else {
-      // if(!this.player.media.paused) {
-      // this.pausedByVisibility = true;
-      this.player.pause();
-      // }
-    }
+    // console.log('isVisible ─>', isVisible);
+    (isVisible) ? this.player.play() : this.player.pause();
   }
 }
 

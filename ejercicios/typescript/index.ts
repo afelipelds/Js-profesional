@@ -1,3 +1,5 @@
+import { Interface } from "readline";
+
 console.log('Hello Typescript')
 
 function add(a: number, b:number) {
@@ -74,3 +76,34 @@ const Ros = fullName('Rosalba', 'Zuluaga')
 const Jhon = fullName('Jhon', 'Parra', 'Abril')
 
 console.log(Felipe, Santo, Ros, Jhon);
+
+
+//Interfaces
+enum Colors {
+    Rojo =  'Rojo',
+    violeta = 'Violeta',
+    Verde = 'Verde',
+}
+interface Rectangulo {
+    ancho: number
+    alto: number
+    color?: Colors
+}
+let rect: Rectangulo = {
+    ancho: 2,
+    alto: 6,
+    color: Colors.Verde,
+}
+
+function area(r: Rectangulo) {
+    return r.ancho * r.alto;
+}
+
+let myAreaRect = area(rect);
+console.log('myAreaRect ->', myAreaRect)
+
+rect.toString = function() {
+    return this.color ? `Un rectangulo de color ${this.color}` : `Un rectangulo con color`;
+}
+
+console.log('rect.toString', rect.toString())

@@ -21,14 +21,14 @@ async function precache() {
   const cache = await caches.open(VERSION); // nos da una nstancia de un caché y regresa una promesa, por eso es asíncrona
   return cache.addAll([
     //conjunto de assets o archivos o recursos que recibe.
-    './',
-    './index.html',
-    './assets/index.js',
-    './assets/MediaPlayer.js',
-    './assets/plugins/AutoPlay.js',
-    './assets/plugins/AutoPause.js',
-    './assets/index.css',
-    './assets/video-2.mp4',
+    // './',
+    // './index.html',
+    // './assets/index.js',
+    // './assets/MediaPlayer.js',
+    // './assets/plugins/AutoPlay.js',
+    // './assets/plugins/AutoPause.js',
+    // './assets/index.css',
+    // './assets/video-2.mp4',
   ]);
 }
 
