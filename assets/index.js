@@ -19,9 +19,15 @@ playButton.onclick = () => player.togglePlay()
 muteButton.onclick = () => player.toggleMute()
 
 /** Service Worker */
-if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('/sw.js')
-        .catch(error => {
-            console.log('error', error.message)
+if('serviceWorker' in navigator) {
+    navigator.serviceWorker
+        .register('../sw.js')
+        .then( registration => {
+            console.log('service worker registration succeeded: ', registration)
         })
+        .catch( error => {
+        console.log('service worker error :',error.message)
+    })
+} else {
+    console.log('Service Workers are not supported in this browser.');
 }
