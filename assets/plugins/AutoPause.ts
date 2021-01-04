@@ -24,7 +24,7 @@ class AutoPause {
 
   private handleIntersection(entries: IntersectionObserverEntry[]) {
     const entry = entries[0];
-    console.log('entry ─>', entry);
+    // console.log('entry ─>', entry);
 
     const isVisible = entry.intersectionRatio >= this.threshold;
 

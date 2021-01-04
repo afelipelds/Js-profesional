@@ -1,8 +1,8 @@
 import MediaPlayer from './MediaPlayer'
 import AutoPlay from './plugins/AutoPlay'
 import AutoPause from './plugins/AutoPause'
+import Ads from './plugins/Ads'
 
-/** Declaraciones */
 const video = document.querySelector('video')
 const playButton: HTMLElement = document.getElementById('playButton')
 const muteButton: HTMLElement = document.getElementById('muteButton')
@@ -11,7 +11,7 @@ const muteButton: HTMLElement = document.getElementById('muteButton')
 const player = new MediaPlayer( 
     { 
         element: video, 
-        plugins: [new AutoPlay(), new AutoPause()],
+        plugins: [new AutoPlay(), new AutoPause(), new Ads()],
     }
 )
 
@@ -23,7 +23,7 @@ if('serviceWorker' in navigator) {
     navigator.serviceWorker
         .register('../sw.js')
         .then( registration => {
-            console.log('service worker registration succeeded: ', registration)
+            // console.log('service worker registration succeeded: ', registration)
         })
         .catch( error => {
         console.log('service worker error :',error.message)
